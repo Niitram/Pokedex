@@ -20,6 +20,8 @@ const getPokemonById = async (idPokemon) => {
                 attack: pokemonData.stats[1].base_stat,
                 defense: pokemonData.stats[2].base_stat,
                 speed: pokemonData.stats[5].base_stat,
+                height: pokemonData.height || null,
+                weight: pokemonData.weight || null,
             });
             //Recorro el array de types,busco en la base de datos si ya existe un registro del tipo y sino se crea
             for (const type of pokemonTypes) {

@@ -4,7 +4,7 @@ const { Pokemon, Type } = require('../db');
 
 const getPokemonByName = async (name) => {
     try {
-        let result = [];
+        let pokemonsEncontrados = [];
         // Buscar en la base de datos
         const pokemonsDB = await Pokemon.findAll({
             //donde name coincida con name
@@ -13,7 +13,7 @@ const getPokemonByName = async (name) => {
             include: { model: Type },
         });
         if (pokemonsDB.length > 0) {
-            result.push(...pokemonsDB);
+            pokemonsEncontrados.push(...pokemonsDB);
         } else {
             // Buscar en la API
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
@@ -26,20 +26,19 @@ const getPokemonByName = async (name) => {
                 attack: pokemonData.stats[1].base_stat,
                 defense: pokemonData.stats[2].base_stat,
                 speed: pokemonData.stats[5].base_stat,
+                height: pokemonData.height || null,
+                weight: pokemonData.weight || null,
                 types: pokemonData.types.map((t) => t.type.name),
             };
-            result.push(pokemon);
+            pokemonsEncontrados.push(pokemon);
         }
-
-
-        if (result.length === 0) {
+        if (pokemonsEncontrados.length === 0) {
             throw Error('No se encontraron resultados para la búsqueda');
         } else {
-            return result
+            return pokemonsEncontrados
         }
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Hubo un error en el servidor');
+    } catch (error) {
+        throw Error(`Desde controller getPokemonByName: ${error.message}`)
     }
 };
 

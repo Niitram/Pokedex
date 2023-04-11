@@ -44,8 +44,9 @@ const { Pokemon, Type } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 // Relación muchos a muchos entre Pokemon y Type
-Pokemon.belongsToMany(Type, { through: 'PokemonType' });
-Type.belongsToMany(Pokemon, { through: 'PokemonType' });
+// Definición de la relación muchos a muchos entre Pokemon y Type a través de PokemonType
+Pokemon.belongsToMany(Type, { through: 'PokemonType', foreignKey: 'pokemonId', otherKey: 'typeId', timestamps: false });
+Type.belongsToMany(Pokemon, { through: 'PokemonType', foreignKey: 'typeId', otherKey: 'pokemonId', timestamps: false });
 
 
 module.exports = {
