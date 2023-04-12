@@ -1,0 +1,45 @@
+@import "../../variables.css";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 99vw;
+    height: 99vh;
+    margin:0;
+    padding: 0;
+    background-image: url("../../assets/images/3-pokemons-bg.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: var(--jet-2);
+}
+
+.button{
+    text-decoration: none;
+    width: fit-content;
+    border: var(--jet) solid 1px;
+    border-radius: 5px;
+    padding: 5px 50px;
+    color: black;
+    font-size: 35px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+.button:hover{
+    background-color: var(--jet-2);
+    color: var(--powder-blue);
+    
+}
+
+@media (min-width: 601px) {
+
+.title {
+    font-size: 2rem;
+}
+}

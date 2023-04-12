@@ -13,10 +13,6 @@ const getAllTypes = require("../Controllers/getAllTypes")
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-
-
-
-
 //Obtiene un arreglo de objetos, donde cada objeto es un pokemon con su información
 router.get("/pokemons", async (req, res) => {
     try {
@@ -29,7 +25,6 @@ router.get("/pokemons", async (req, res) => {
 
 router.get("/pokemons/name", async (req, res) => {
     const { name } = req.query
-    console.log(name);
     if (name) {
         try {
             const response = await getPokemonByName(name);

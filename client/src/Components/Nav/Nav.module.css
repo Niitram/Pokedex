@@ -1,0 +1,36 @@
+@import "../../variables.css";
+
+.container{
+    background-color: var(--white-smoke);
+    padding: 30px 10px;
+    border-bottom: 1px solid var(--powder-blue);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button{
+    text-decoration: none;
+    width: fit-content;
+    border-bottom: var(--jet) solid 1px;
+    padding: 5px 10px;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 3px 10px 5px 1px rgba(0, 0, 0, 0.044);
+}
+.button:hover{
+    background-color: var(--dim-gray);
+    color: var(--white-smoke);
+    border-bottom: var(--white-smoke) solid 1px;
+}
+
+@media (max-width: 601px) {
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

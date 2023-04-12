@@ -1,0 +1,9 @@
+:root {
+    --jet-2: #313131ff;
+    --jet: #343334ff;
+    --dim-gray: #5E6162ff;
+    --powder-blue: #A2B7C4ff;
+    --white-smoke: #F2F2F1ff;
+
+    --shadow: 3px 10px 5px 1px rgba(0,0,0,0.75);
+}
