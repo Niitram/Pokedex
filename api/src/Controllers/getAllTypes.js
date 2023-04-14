@@ -4,12 +4,16 @@ const { Type } = require('../db');
 const getAllTypes = async () => {
     try {
         const response = await axios.get("https://pokeapi.co/api/v2/type")
-        const allTypes = []
+        let allTypes = []
         for (const tipo of response.data.results) {
-            //en tipo.name tengo el nombre del type
-            allTypes.push(tipo.name)
-            await Type.create({ name: tipo.name })
+            const [dbType, created] = await Type.findOrCreate({ where: { name: tipo.name } });
+            console.log(dbType);
+            if (created) {
+                console.log(created);
+                allTypes.push(dbType);
+            }
         }
+        if (!allTypes.length) allTypes = await Type.findAll()
         return allTypes
     } catch (error) {
         throw Error(`Desde controller getAllTypes: ${error.message}`)

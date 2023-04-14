@@ -4,15 +4,17 @@ const { Pokemon, Type } = require('../db');
 const getPokemonById = async (idPokemon) => {
     try {
         //Primero se busca en la BDD
-        let pokemon = await Pokemon.findByPk(idPokemon, { include: Type });
-        //Sino va a la API
-        if (!pokemon) {
+        const source = isNaN(idPokemon) ? "db" : "API";
+        if (source === "db") {
+            // hacer algo con la información de la base de datos
+            const pokemonDB = await Pokemon.findByPk(idPokemon, { include: Type });
+            return pokemonDB
+        } else if (source === "API") {
+            // hacer algo con la información de la API
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
             const pokemonData = response.data;
-            const pokemonTypes = pokemonData.types.map((type) => type.type.name);
 
-            //creo en la BDD el Pokemon
-            pokemon = await Pokemon.create({
+            const pokemon = {
                 id: pokemonData.id,
                 name: pokemonData.name,
                 image: pokemonData.sprites.front_default,
@@ -22,17 +24,10 @@ const getPokemonById = async (idPokemon) => {
                 speed: pokemonData.stats[5].base_stat,
                 height: pokemonData.height || null,
                 weight: pokemonData.weight || null,
-            });
-            //Recorro el array de types,busco en la base de datos si ya existe un registro del tipo y sino se crea
-            for (const type of pokemonTypes) {
-                const [dbType] = await Type.findOrCreate({ where: { name: type } });
-                //se asocia el pokemon con ese tipo
-                await pokemon.addType(dbType);
-            }
-
-            pokemon = await Pokemon.findByPk(idPokemon, { include: Type });
+                types: pokemonData.types.map((t) => t.type.name)
+            };
+            return pokemon
         }
-        return pokemon
     } catch (error) {
         throw Error(`Desde controller getPokemonById: ${error.message}`)
     }
