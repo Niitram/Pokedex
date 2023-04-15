@@ -8,7 +8,7 @@ const showPokemons = (pokemonList, page) => {
     const pagePokemons = pokemonList.slice(startIndex, endIndex + 1);
     return (
         <div>
-            {pagePokemons.map((pokemon) => {
+            {pagePokemons.map((pokemon, index) => {
                 return (
                     <Card key={pokemon.id} pokemon={pokemon} />
                 );

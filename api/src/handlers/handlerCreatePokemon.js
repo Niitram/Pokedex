@@ -13,7 +13,6 @@ const handlerCreatePokemon = async (req, res) => {
             res.status(201).json(response);
         }
         if (pokemonFinded !== "pokemon no encontrado") res.status(400).send(`Ya existe el Pokemon ${name}`)
-
     } catch (error) {
         res.status(401).json({ error: error.message });
     }
