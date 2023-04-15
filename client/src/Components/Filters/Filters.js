@@ -1,17 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllTypes } from '../../Redux/actions';
+import React from 'react'
+
+import FilterTypes from '../FilterTypes/FilterTypes';
+
 
 function Filters() {
-    const dispatch = useDispatch()
-    const copyAllTypes = useSelector(state => state.copyAllTypes)
-    useEffect(() => {
-        dispatch(getAllTypes())
-    }, [dispatch])
 
-    const handleTypeFilterChange = () => {
-
-    }
     const handleOriginFilterChange = () => {
 
     }
@@ -21,22 +14,16 @@ function Filters() {
     const handleSortOrderAttackChange = () => {
 
     }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <button type='submit'>Show all</button>
-                <fieldset>
-                    <legend>Filter by types:</legend>
-                    {
-                        copyAllTypes.map((type) => {
-                            return (<label key={type.id}>
-                                <input type="checkbox" name="type" value={type.name} onChange={handleTypeFilterChange} />
-                                {type.name}
-                            </label>)
-                        })
-                    }
-                </fieldset>
+                <FilterTypes />
+
                 <div>
                     <label htmlFor="origin-filter">Filter by origin:</label>
                     <select id="origin-filter" onChange={handleOriginFilterChange}>

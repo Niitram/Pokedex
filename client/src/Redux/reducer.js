@@ -1,4 +1,4 @@
-import { SEARCH_BY_NAME, GET_ALL_POKEMONS, GET_ALL_TYPES } from "./actions"
+import { SEARCH_BY_NAME, GET_ALL_POKEMONS, GET_ALL_TYPES, FILTER_TYPES } from "./actions"
 
 
 
@@ -22,6 +22,16 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_ALL_TYPES:
             return { ...state, allTypes: [...action.payload], copyAllTypes: [...action.payload] }
+
+        case FILTER_TYPES:
+            const arrFilter = [...state.allPokemons]
+            const filter = arrFilter.filter(pokemon => {
+                return action.payload.every(type => pokemon.types.includes(type))
+            });
+            return {
+                ...state,
+                copyAllPokemons: [...filter]
+            }
 
         default:
             return { ...state }

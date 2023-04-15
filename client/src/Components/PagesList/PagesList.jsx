@@ -35,7 +35,8 @@ function PagesList() {
                 arrayWithPages.map((page,index) => {
                     if (arrayWithPages.length-1) {
                         return (
-                            <button 
+                            <button
+                                key={arrayWithPages.length*index}
                                 onClick={()=>{
                                     showPokemons(copyAllPokemons,setCurrentPage(index+1) )
                                 }}>

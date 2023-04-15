@@ -3,6 +3,7 @@ import axios from "axios"
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME"
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS"
 export const GET_ALL_TYPES = "GET_ALL_TYPES"
+export const FILTER_TYPES = "FILTER_TYPES"
 
 const URL_BASE = `http://localhost:3001`
 
@@ -39,5 +40,12 @@ export const getAllTypes = () => {
             type: GET_ALL_TYPES,
             payload: response.data
         })
+    }
+}
+/* filtra los types */
+export const filterType = (arrType) => {
+    return {
+        type: FILTER_TYPES,
+        payload: arrType
     }
 }
