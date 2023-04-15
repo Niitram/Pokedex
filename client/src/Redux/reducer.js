@@ -1,4 +1,4 @@
-import { SEARCH_BY_NAME } from "./actions"
+import { SEARCH_BY_NAME, GET_ALL_POKEMONS, GET_ALL_TYPES } from "./actions"
 
 
 
@@ -13,11 +13,15 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEARCH_BY_NAME:
-            console.log(action.payload);
-            const armado = []
-            armado.push(action.payload)
-            console.log(armado);
-            return { ...state, copyAllPokemons: [...armado] }
+            const aux = []
+            aux.push(action.payload)
+            return { ...state, copyAllPokemons: [...aux] }
+
+        case GET_ALL_POKEMONS:
+            return { ...state, copyAllPokemons: [...action.payload], allPokemons: [...action.payload] }
+
+        case GET_ALL_TYPES:
+            return { ...state, allTypes: [...action.payload], copyAllTypes: [...action.payload] }
 
         default:
             return { ...state }

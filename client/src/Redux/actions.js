@@ -1,6 +1,8 @@
 import axios from "axios"
 
 export const SEARCH_BY_NAME = "SEARCH_BY_NAME"
+export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS"
+export const GET_ALL_TYPES = "GET_ALL_TYPES"
 
 const URL_BASE = `http://localhost:3001`
 
@@ -17,5 +19,25 @@ export const searchByName = (name) => {
                 payload: response.data
             })
         }
+    }
+}
+/* trae todos los pokemons */
+export const getAllPokemons = () => {
+    return async function (dispatch) {
+        const response = await axios.get(`${URL_BASE}/pokemons`)
+        dispatch({
+            type: GET_ALL_POKEMONS,
+            payload: response.data
+        })
+    }
+}
+/* trae todos los types */
+export const getAllTypes = () => {
+    return async function (dispatch) {
+        const response = await axios.get(`${URL_BASE}/types`)
+        dispatch({
+            type: GET_ALL_TYPES,
+            payload: response.data
+        })
     }
 }

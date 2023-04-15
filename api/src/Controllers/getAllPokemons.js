@@ -1,6 +1,6 @@
 const axios = require("axios")
 
-const getAllPokemons = async () => {
+/* const getAllPokemons = async () => {
     try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=60');
         const results = response.data.results;
@@ -23,6 +23,34 @@ const getAllPokemons = async () => {
     } catch (error) {
         throw Error(`Desde controller getAllPokemons: ${error.message}`)
     }
+} */
+
+
+const getAllPokemons = async () => {
+    try {
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=60');
+        const results = response.data.results;
+        //resuelvo todas las promesas juntas por la demora
+        const pokemonPromises = results.map(result => axios.get(result.url));
+        const pokemonResponses = await Promise.all(pokemonPromises);
+
+        const pokemonArray = pokemonResponses.map(response => {
+            const pokemonData = response.data;
+            return {
+                id: pokemonData.id,
+                image: pokemonData.sprites.front_default,
+                name: pokemonData.name,
+                types: pokemonData.types.map(type => type.type.name)
+            };
+        });
+        return pokemonArray;
+    } catch (error) {
+        throw Error(`Desde controller getAllPokemons: ${error.message}`)
+    }
 }
+
+
+
+
 
 module.exports = getAllPokemons
