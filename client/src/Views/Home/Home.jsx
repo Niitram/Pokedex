@@ -1,8 +1,12 @@
 import React from 'react'
+import SearchPokemon from '../../Components/SearchPokemon/SearchPokemon'
+
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <div><SearchPokemon/></div>
+    </div>
   )
 }
 
