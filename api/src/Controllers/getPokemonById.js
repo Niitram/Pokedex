@@ -6,11 +6,27 @@ const getPokemonById = async (idPokemon) => {
         //Primero se busca en la BDD
         const source = isNaN(idPokemon) ? "db" : "API";
         if (source === "db") {
-            // hacer algo con la información de la base de datos
-            const pokemonDB = await Pokemon.findByPk(idPokemon, { include: Type });
-            return pokemonDB
+            const pokemonDB = await Pokemon.findByPk(idPokemon, {
+                include: [{
+                    model: Type,
+                    attributes: ['name'],
+                    through: { attributes: [] }
+                }]
+            });
+
+            return {
+                id: pokemonDB.id,
+                name: pokemonDB.name,
+                image: pokemonDB.image,
+                hp: pokemonDB.hp,
+                attack: pokemonDB.attack,
+                defense: pokemonDB.defense,
+                speed: pokemonDB.speed,
+                height: pokemonDB.height,
+                weight: pokemonDB.weight,
+                types: pokemonDB.types.map((t) => t.name)
+            }
         } else if (source === "API") {
-            // hacer algo con la información de la API
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
             const pokemonData = response.data;
 
