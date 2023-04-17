@@ -2,6 +2,8 @@ import React from 'react'
 import SearchPokemon from '../../Components/SearchPokemon/SearchPokemon'
 import PagesList from '../../Components/PagesList/PagesList'
 import Filters from '../../Components/Filters/Filters'
+import styles from './Home.module.css'
+
 
 
 
@@ -14,7 +16,7 @@ function Home() {
         <div><Filters/></div>
       </div>
 
-      <div><PagesList/></div>
+      <div ><PagesList/></div>
 
     </div>
   )

@@ -3,6 +3,7 @@ import showPokemons from "./showPokemons";
 import { getAllPokemons } from '../../Redux/actions'
 import { useDispatch, useSelector } from 'react-redux';
 import divideArray from './divideArray';
+import styles from './PagesList.module.css'
 
 function PagesList() {
     const copyAllPokemons = useSelector(state=>state.copyAllPokemons)
@@ -27,29 +28,33 @@ function PagesList() {
     };
 
     return (
-        <div>
-            <button disabled={currentPage === 1} onClick={prevPage}>
-                Previous Page
-            </button>
-            {
-                arrayWithPages.map((page,index) => {
-                    if (arrayWithPages.length-1) {
-                        return (
-                            <button
-                                key={arrayWithPages.length*index}
-                                onClick={()=>{
-                                    showPokemons(copyAllPokemons,setCurrentPage(index+1) )
-                                }}>
-                                    {index+1}
-                            </button>
-                        );
-                    }
-                })
-            }
-            <button disabled={currentPage === totalPages} onClick={nextPage}>
-                Next Page
-            </button>
-            {renderedPokemons}
+        <div className={styles.container}>
+            <div>
+                <button disabled={currentPage === 1} onClick={prevPage}>
+                    Previous Page
+                </button>
+                {
+                    arrayWithPages.map((page,index) => {
+                        if (arrayWithPages.length-1) {
+                            return (
+                                <button
+                                    key={arrayWithPages.length*index}
+                                    onClick={()=>{
+                                        showPokemons(copyAllPokemons,setCurrentPage(index+1) )
+                                    }}>
+                                        {index+1}
+                                </button>
+                            );
+                        }
+                    })
+                }
+                <button disabled={currentPage === totalPages} onClick={nextPage}>
+                    Next Page
+                </button>
+            </div>
+            <div className={styles.containerCards}>
+                {renderedPokemons}
+            </div>
         </div>
     )
 }

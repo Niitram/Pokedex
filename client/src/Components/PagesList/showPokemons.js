@@ -7,13 +7,13 @@ const showPokemons = (pokemonList, page) => {
     // Obtener los pokemons de la página actual
     const pagePokemons = pokemonList.slice(startIndex, endIndex + 1);
     return (
-        <div>
+        <>
             {pagePokemons.map((pokemon, index) => {
                 return (
                     <Card key={pokemon.id} pokemon={pokemon} />
                 );
             })}
-        </div>
+        </>
     );
 }
 
