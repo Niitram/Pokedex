@@ -7,9 +7,7 @@ const getAllTypes = async () => {
         let allTypes = []
         for (const tipo of response.data.results) {
             const [dbType, created] = await Type.findOrCreate({ where: { name: tipo.name } });
-            console.log(dbType);
             if (created) {
-                console.log(created);
                 allTypes.push(dbType);
             }
         }

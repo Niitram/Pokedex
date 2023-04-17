@@ -40,10 +40,7 @@ export const validateStringAndNumber = (pokemon, setErrors) => {
         }
         else { setErrors(prevState => { return { ...prevState, speed: "Invalid number" } }) }
     }
-}
-
-export const validateImage = (pokemon, setErrors) => {
-    //Validacion name
+    //Validacion image
     const regexUrlImage = /(https?:\/\/.*\.(?:png|jpg|jpeg))/i
 
     if (!pokemon.image) setErrors(prevState => { return { ...prevState, image: "Required" } })
@@ -55,3 +52,20 @@ export const validateImage = (pokemon, setErrors) => {
     }
 
 }
+
+export const validateTypes = (pokemon, setErrors, pokemonTypes) => {
+    // Validacion types
+    if (pokemon.types.length === 0) {
+        setErrors((prevState) => {
+            return { ...prevState, types: "Required" };
+        });
+    } else if (pokemon.types.length > 2) {
+        setErrors((prevState) => {
+            return { ...prevState, types: "Maximum 2 types" };
+        });
+    } else {
+        setErrors((prevState) => {
+            return { ...prevState, types: "" };
+        });
+    }
+};

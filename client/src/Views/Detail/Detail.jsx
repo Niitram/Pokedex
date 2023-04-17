@@ -27,7 +27,7 @@ function Detail() {
       <>
       {pokemon?
         (<div>
-          <Link>Home</Link>
+          <Link to={"/home"}>Home</Link>
           <div>{name}</div>
           <div>Nº{pokemon.id}</div>
           <div>
