@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import styles from './FilterTypes.module.css'
+import colorTypesGenerator from '../../../utils/colorTypesGenerator'
 
 function FilterTypes({ handleTypeFilterChange }) {
 
@@ -8,11 +10,11 @@ function FilterTypes({ handleTypeFilterChange }) {
 
     return (
         <div>
-            <fieldset>
-                <legend>Filter by types:</legend>
+            <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Filter by types:</legend>
                 {
                     allTypes.map((type) => {
-                        return (<label key={type.id}>
+                        return (<label style={{ backgroundColor: `${colorTypesGenerator(type.name)}` }} className={styles.label} key={type.id}>
                             <input
                                 type="checkbox"
                                 name="type"

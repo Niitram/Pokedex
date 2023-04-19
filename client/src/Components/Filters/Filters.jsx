@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import FilterOrigin from '../allFilters/FilterOrigin/FilterOrigin';
 import FilterName from '../allFilters/FilterName/FilterName';
 import FilterAttack from '../allFilters/FilterAttack/FilterAttack';
+import styles from './Filters.module.css'
 
 function Filters() {
 
@@ -45,8 +46,7 @@ function Filters() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <button type='submit'>Clear filters</button>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <div>
                     <FilterTypes handleTypeFilterChange={handleTypeFilterChange} />
                 </div>
@@ -59,6 +59,7 @@ function Filters() {
                 <div>
                     <FilterAttack handleSortOrderAttackChange={handleSortOrderAttackChange} />
                 </div>
+                <button  className={styles.button} type='submit'>Clear filters</button>
             </form>
         </div>
     )

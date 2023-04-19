@@ -6,6 +6,7 @@ import FormCreate from './Views/FormCreate/FormCreate';
 import Home from './Views/Home/Home';
 import Landing from './Views/Landing/Landing';
 import Nav from './Components/Nav/Nav';
+import Footer from './Components/Footer/Footer';
 
 
 
@@ -25,6 +26,11 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/createPokemon" element={<FormCreate />} />
       </Routes>
+      <div >
+        {
+          locationNow.pathname !== "/" && <Footer />
+        }
+      </div>
     </div>
   );
 }

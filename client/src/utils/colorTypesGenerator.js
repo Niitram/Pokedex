@@ -33,9 +33,13 @@ const colorTypesGenerator = (type) => {
         case 'dragon':
             return '#7038F8';
         case 'dark':
-            return '#705848';
+            return '#aa9a90';
         case 'fairy':
             return '#EE99AC';
+        case 'unknown':
+            return '#EG99AC';
+        case 'shadow':
+            return '#B8AAD0';
         default:
             return '#FFF';
     }

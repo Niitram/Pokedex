@@ -10,14 +10,16 @@ import styles from './Home.module.css'
 function Home() {
 
   return (
-    <div>
-      <div>
-        <div><SearchPokemon/></div>
-        <div><Filters/></div>
+    <div className={styles.container}>
+      <div className={styles.containerSearchFilter}>
+        <div className={styles.containerSearch}>
+          <SearchPokemon/>
+        </div>
+        <div className={styles.containerFilter}>
+          <Filters/>
+        </div>
       </div>
-
       <div ><PagesList/></div>
-
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
-import { useSelector,useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { searchByName } from '../../Redux/actions';
+import styles from './SearchPokemon.module.css'
 
 function SearchPokemon() {
     const dispatch = useDispatch()
@@ -20,11 +21,12 @@ function SearchPokemon() {
         setNameSearch(e.target.value)
     }
     return (
-        <div>
-            <form onSubmit={handlerSubmit}>
-                <label htmlFor="">Search Pokemon</label>
+        <>
+            <form className={styles.containerForm} onSubmit={handlerSubmit}>
+                <label className={styles.label} htmlFor="">Search Pokemon</label>
                 <div>
-                    <input 
+                    <input
+                        className={styles.input} 
                         onChange={handlerChange} 
                         type="text" 
                         placeholder='Your favorite Pokemon' 
@@ -33,10 +35,10 @@ function SearchPokemon() {
                                 handlerSubmit(e)
                             }}}
                     />
-                    <button type="submit">Search</button>
+                    <button className={styles.button} type="submit" >Search</button>
                 </div>
             </form>
-        </div>
+        </>
     )
 }
 

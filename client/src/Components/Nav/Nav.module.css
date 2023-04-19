@@ -1,29 +1,44 @@
 @import "../../variables.css";
 
 .container{
-    background-color: var(--white-smoke);
+    background-color: var(--jet);
     padding: 30px 10px;
     border-bottom: 1px solid var(--powder-blue);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .button{
+    position: relative;
     text-decoration: none;
     width: fit-content;
-    border-bottom: var(--jet) solid 1px;
-    padding: 5px 10px;
-    color: black;
+    padding: 5px 0px;
+    margin: 0px 20px;
+    color: var(--white-smoke);
     font-size: 20px;
+    font-weight: 600;
     cursor: pointer;
     box-shadow: 3px 10px 5px 1px rgba(0, 0, 0, 0.044);
 }
-.button:hover{
+.button::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f8f6f6;
+    transition: width 0.3s ease-in-out;
+}
+.button:hover::after {
+    width: 100%;
+}
+/* .button:hover{
     background-color: var(--dim-gray);
     color: var(--white-smoke);
     border-bottom: var(--white-smoke) solid 1px;
-}
+} */
 
 @media (max-width: 601px) {
 

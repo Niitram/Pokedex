@@ -1,0 +1,19 @@
+.fieldset{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 200px;
+    width: 300px;
+    margin-top: 10px;
+    font-weight: 500;
+    padding: 20px;
+    border: none;
+}
+
+.label{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 1px;
+    border-radius: 5px;
+    padding: 3px 2px;
+}

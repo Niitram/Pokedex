@@ -1,0 +1,119 @@
+.footer{
+    background-color: var(--jet);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.containerButtons{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.containerButtons::after{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 50px;
+    right: 0;
+    background-color: rgb(116, 115, 113);
+}
+.button{
+    position: relative;
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px 0px;
+    margin: 0px 20px;
+    color: var(--white-smoke);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 3px 10px 5px 1px rgba(0, 0, 0, 0.044);
+}
+.button::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #f8f6f6;
+    transition: width 0.3s ease-in-out;
+}
+.button:hover::after {
+    width: 100%;
+}
+
+.containerInfo{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.containerInfo::after{
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 50px;
+    right: 0;
+    background-color: rgb(116, 115, 113);
+}
+.containerLinks{
+    width: 180px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linkGitHub{
+    height: 40px;
+    width: 40px;
+    background-image: url("../../assets/images/github-64.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.linkLinkedIn{
+    height: 40px;
+    width: 40px;
+    background-image: url("../../assets/images/linkedin-64.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.containerScroll{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.buttonScroll{
+    background-image: url("../../assets/images/scroll-up-64.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.buttonScroll:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .containerButtons{
+        width: 200px;
+        height: 100px;
+        padding-left: 0px;
+    }
+}

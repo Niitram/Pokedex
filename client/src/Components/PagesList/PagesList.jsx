@@ -29,8 +29,8 @@ function PagesList() {
 
     return (
         <div className={styles.container}>
-            <div>
-                <button disabled={currentPage === 1} onClick={prevPage}>
+            <div className={styles.containerButtons}>
+                <button className={styles.buttonNext} disabled={currentPage === 1} onClick={prevPage}>
                     Previous Page
                 </button>
                 {
@@ -38,6 +38,7 @@ function PagesList() {
                         if (arrayWithPages.length-1) {
                             return (
                                 <button
+                                    className={styles.buttonNext}
                                     key={arrayWithPages.length*index}
                                     onClick={()=>{
                                         showPokemons(copyAllPokemons,setCurrentPage(index+1) )
@@ -48,7 +49,7 @@ function PagesList() {
                         }
                     })
                 }
-                <button disabled={currentPage === totalPages} onClick={nextPage}>
+                <button className={styles.buttonNext} disabled={currentPage === totalPages} onClick={nextPage}>
                     Next Page
                 </button>
             </div>
