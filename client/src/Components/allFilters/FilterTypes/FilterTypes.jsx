@@ -5,7 +5,6 @@ import colorTypesGenerator from '../../../utils/colorTypesGenerator'
 
 function FilterTypes({ handleTypeFilterChange }) {
 
-
     const allTypes = useSelector(state => state.allTypes)
 
     return (

@@ -41,7 +41,7 @@ const colorTypesGenerator = (type) => {
         case 'shadow':
             return '#B8AAD0';
         default:
-            return '#FFF';
+            return '#7058F9'
     }
 }
 
