@@ -21,7 +21,7 @@ const getPokemonByName = async (name) => {
             const pokemon = {
                 id: pokemonData.id,
                 name: pokemonData.name,
-                image: pokemonData.sprites.front_default,
+                image: pokemonData.sprites.other.dream_world.front_default,
                 hp: pokemonData.stats[0].base_stat,
                 attack: pokemonData.stats[1].base_stat,
                 defense: pokemonData.stats[2].base_stat,

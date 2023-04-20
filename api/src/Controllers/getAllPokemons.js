@@ -39,7 +39,8 @@ const getAllPokemons = async () => {
             const pokemonData = response.data;
             return {
                 id: pokemonData.id,
-                image: pokemonData.sprites.front_default,
+                image: pokemonData.sprites.other.dream_world.front_default,
+                /* image: pokemonData.sprites.front_default, */
                 name: pokemonData.name,
                 attack: pokemonData.stats[1].base_stat,
                 types: pokemonData.types.map(type => type.type.name)
