@@ -6,7 +6,6 @@ function Nav() {
   return (
     <div className={styles.container}>
       <Link className={styles.button} to={`/Home`}>Home</Link>
-      <Link className={styles.button} to={`/detail/:id`}>Detail</Link>
       <Link className={styles.button} to={`/createPokemon`}>Create Pokemon</Link>
     </div>
   )

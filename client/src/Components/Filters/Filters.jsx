@@ -20,7 +20,6 @@ function Filters() {
     const handleTypeFilterChange = (e) => {
         let updateTypes = [...selectedTypes, e.target.value]
         if (e.target.checked) {
-            updateTypes = [...selectedTypes, e.target.value]
             setSelectedTypes([...updateTypes])
             dispatch(filterType(updateTypes))
         } else {
@@ -41,6 +40,7 @@ function Filters() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
+        setSelectedTypes([])
         dispatch(getAllPokemons())
     }
 
@@ -48,7 +48,7 @@ function Filters() {
         <div>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div>
-                    <FilterTypes handleTypeFilterChange={handleTypeFilterChange} />
+                    <FilterTypes handleTypeFilterChange={handleTypeFilterChange} selectedTypes={selectedTypes}/>
                 </div>
                 <div>
                     <FilterOrigin handleOriginFilterChange={handleOriginFilterChange} />
@@ -59,7 +59,7 @@ function Filters() {
                 <div>
                     <FilterAttack handleSortOrderAttackChange={handleSortOrderAttackChange} />
                 </div>
-                <button  className={styles.button} type='submit'>Clear filters</button>
+                <button  className={styles.button} type='submit'>Show all</button>
             </form>
         </div>
     )

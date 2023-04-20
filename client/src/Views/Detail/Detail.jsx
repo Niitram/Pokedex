@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import styles from './Detail.module.css'
+import colorTypesGenerator from  '../../utils/colorTypesGenerator'
 
 function Detail() {
   const {id}=useParams()
@@ -26,20 +28,45 @@ function Detail() {
   return (
       <>
       {pokemon?
-        (<div>
-          <Link to={"/home"}>Home</Link>
-          <div>{name}</div>
-          <div>Nº{pokemon.id}</div>
-          <div>
-            <div><img src={image} alt={name} /></div>
-            <div>
-                <div>{hp}</div>
-                <div>{attack}</div>
-                <div>{defense}</div>
-                <div>{speed}</div>
-                <div>{height}</div>
-                <div>{weight}</div>
-                <div>{types && types.length ? types.map(type => <div>{type}</div>) : <div>{types}</div>}</div>
+        (<div className={styles.detail}>
+          <div className={styles.container}>
+            <div className={styles.header}>
+              <Link className={styles.back} to={"/home"}>{"<"}</Link>
+              <div className={styles.name}>{name}</div>
+            </div>
+            <div className={styles.number}>Nº{typeof pokemon.id === "string" ? "Unknown" :pokemon.id}</div>
+            <div className={styles.body}>
+              <div className={styles.containerImage}><img className={styles.image} src={image} alt={name} /></div>
+              <div className={styles.containerInfo}>
+                  <h1 className={styles.title}>Pokedex data</h1>
+                  <div className={styles.containerInfoStructure}>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconHp}></div>
+                      <div className={styles.info}>Hp: {hp}</div>
+                    </div>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconAttack}></div>
+                      <div className={styles.info}>Attack: {attack}</div>
+                    </div>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconDefense}></div>
+                      <div className={styles.info}>Defense: {defense}</div>
+                    </div>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconSpeed}></div>
+                      <div className={styles.info}>Speed: {speed<=0? "Unknown":speed}</div>
+                    </div>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconHeight}></div>
+                      <div className={styles.info}>Height: {height<=0? "Unknown":height}</div>
+                    </div>
+                    <div className={styles.infoDecoration}>
+                      <div className={styles.iconWeight}></div>
+                      <div className={styles.info}>Weight: {weight<=0? "Unknown":weight}</div>
+                    </div>
+                  </div>
+                  <div className={styles.containerTypes}>{types &&  types.map(type => <div style={{ color: `${colorTypesGenerator(type)}` }} className={styles.type}>{type}</div>)}</div>
+              </div>
             </div>
           </div>
         </div>)

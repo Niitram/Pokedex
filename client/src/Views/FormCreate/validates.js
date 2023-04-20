@@ -1,6 +1,6 @@
 export const validateStringAndNumber = (pokemon, setErrors) => {
     //Validacion name
-    const regexString = /^[a-zA-Z]+$/
+    const regexString = /^[a-zA-Z][a-zA-Z\s]*$/
     if (!pokemon.name) setErrors(prevState => { return { ...prevState, name: "Required" } })
     if (pokemon.name) {
         if (regexString.test(pokemon.name)) {

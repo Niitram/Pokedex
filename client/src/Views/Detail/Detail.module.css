@@ -1,0 +1,266 @@
+.detail{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url("../../assets/images/background_prairie_pokemon_screencapture_by_nemotrex_de8nlib-fullview.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10px;
+}
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.back{
+    align-self: flex-start;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid var(--jet);
+    border-radius: 5px;
+    padding-bottom: 4px;
+    padding-right: 4px;
+    padding-left: 4px;
+    box-shadow: 5px 5px 3px 0px rgba(0,0,0,0.75);
+}
+.back:hover{
+    background-color: var(--jet);
+    color: var(--white-smoke);
+}
+
+.name{
+    background-image: url("../../assets/images/bgTitle.png");
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: center;
+    color: var(--white-smoke);
+    font-size: 45px;
+    font-weight: 600;
+    text-shadow: 6px 6px 8px rgba(255, 255, 255, 0.36);
+}
+.number{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 30px 0;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.containerImage{
+    position: relative;
+    width: 350px;
+    max-height: 350px;
+    padding: 60px 60px;
+    margin: 50px;
+    border: 5px solid var(--jet);
+    border-radius: 50%;
+background: #c2c2c24c;
+box-shadow: inset 18px 18px 48px #a5a5a5,
+            inset -18px -18px 48px #dfdfdf;
+    /* box-shadow:  18px 18px 48px #a5a5a5,
+                -18px -18px 48px #dfdfdf; */
+}
+
+
+.containerImage::after{
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 10px;
+    border-radius: 100px / 50px;
+    background-color: rgba(0, 0, 0, 0.259);
+    bottom: 20px;
+    right: 45%;
+}
+.image{
+    width: 90%;
+    max-height: 90%;
+}
+
+.containerInfo{
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../../assets/images/bggray.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    position: relative;
+    background-color: var(--jet);
+    width: 100%;
+    padding: 10px 0px;
+    margin: 0;
+    color: var(--white-smoke);
+}
+.title::before{
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-image: url("../../assets/images/pokeballconreflejo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: -10px;
+    top: -10px;
+}
+.containerInfoStructure{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 30px;
+    border-right: 3px var(--jet) solid;
+    border-left: 3px var(--jet) solid;
+}
+.infoDecoration{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    padding: 10px 3px;
+    margin: 10px 10px;
+    background: rgb(12, 12, 12);
+    background: linear-gradient(86deg, rgba(19, 19, 19, 0.422) 38%, rgba(168, 168, 167, 0.103) 90%, rgba(0,0,0,0) 100%);
+}
+.info{
+    color: #080808;
+    font-size: larger;
+    font-weight: 600;
+}
+.iconHp{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/heart-30.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.iconAttack{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/sword-64.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.iconDefense{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/shield-50.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.iconSpeed{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/fast-forward-30.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.iconHeight{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/height-30.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.iconWeight{
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+    background-image: url("../../assets/images/weight-50.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    background-color: #dfdfdf;
+    border-radius: 100%;
+}
+.containerTypes{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    background-color: var(--jet);
+}
+.type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    width: 150px;
+    margin: 0px 20px;
+    height: 40px;
+    border: 1px black solid;
+    background-image: url("../../assets/images/bgtypes.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media screen and (max-width: 600px) {
+    .detail{
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        padding: 50px 0px;
+    }
+    .containerImage{
+        position: relative;
+        width: 200px;
+        padding: 60px 60px;
+        margin: 50px 0px;
+    }
+    .containerImage::before{
+        position: absolute;
+        content: "";
+        width: 0px;
+        height: 0px;
+    }
+}

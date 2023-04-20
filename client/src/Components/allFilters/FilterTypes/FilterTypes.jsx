@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import styles from './FilterTypes.module.css'
 import colorTypesGenerator from '../../../utils/colorTypesGenerator'
 
-function FilterTypes({ handleTypeFilterChange }) {
+function FilterTypes({ handleTypeFilterChange,selectedTypes }) {
 
     const allTypes = useSelector(state => state.allTypes)
 
@@ -18,7 +18,9 @@ function FilterTypes({ handleTypeFilterChange }) {
                                 type="checkbox"
                                 name="type"
                                 value={type.name}
-                                onChange={handleTypeFilterChange} />
+                                onChange={handleTypeFilterChange} 
+                                checked={selectedTypes.includes(type.name)}
+                                />
                             {type.name}
                         </label>)
                     })

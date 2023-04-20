@@ -116,4 +116,19 @@
         height: 100px;
         padding-left: 0px;
     }
+    .containerButtons::after{
+        width: 0px;
+        height: 0px;
+    }
+    .containerInfo::after{
+        width: 0px;
+        height: 0px;
+    }
+    .containerLinks{
+        height: 60px;
+    }
+    .containerScroll{
+        height: 60px;
+        padding-bottom: 50px;
+    }
 }
