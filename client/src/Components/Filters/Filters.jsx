@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { filterByOrigin, filterType, getAllPokemons, getAllTypes, orderAttack, orderName } from '../../Redux/actions';
+import { getAllTypes } from '../../Redux/actions';
 import FilterTypes from '../allFilters/FilterTypes/FilterTypes';
 import { useDispatch } from 'react-redux';
 import FilterOrigin from '../allFilters/FilterOrigin/FilterOrigin';
 import FilterName from '../allFilters/FilterName/FilterName';
 import FilterAttack from '../allFilters/FilterAttack/FilterAttack';
 import styles from './Filters.module.css'
+import { handleOriginFilterChange, handleSortOrderAttackChange, handleSortOrderNameChange, handleSubmit, handleTypeFilterChange } from './handlersFilters';
 
 function Filters() {
 
@@ -17,47 +18,32 @@ function Filters() {
         dispatch(getAllTypes())
     }, [dispatch])
 
-    const handleTypeFilterChange = (e) => {
-        let updateTypes = [...selectedTypes, e.target.value]
-        if (e.target.checked) {
-            setSelectedTypes([...updateTypes])
-            dispatch(filterType(updateTypes))
-        } else {
-            updateTypes = updateTypes.filter(type => type !== e.target.value);
-            setSelectedTypes([...updateTypes])
-            dispatch(filterType(updateTypes))
-        }
-    }
-
-    const handleOriginFilterChange = (e) => {
-        dispatch(filterByOrigin(e.target.value))
-    }
-    const handleSortOrderNameChange = (e) => {
-        dispatch(orderName(e.target.value))
-    }
-    const handleSortOrderAttackChange = (e) => {
-        dispatch(orderAttack(e.target.value))
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setSelectedTypes([])
-        dispatch(getAllPokemons())
-    }
+    
 
     return (
         <div>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={(e)=>{
+                handleSubmit(e, setSelectedTypes, dispatch)
+            }}>
                 <div>
-                    <FilterTypes handleTypeFilterChange={handleTypeFilterChange} selectedTypes={selectedTypes}/>
+                    <FilterTypes handleTypeFilterChange={(e)=>{
+                        handleTypeFilterChange(e,selectedTypes, setSelectedTypes,dispatch)
+                    }} selectedTypes={selectedTypes}/>
                 </div>
                 <div>
-                    <FilterOrigin handleOriginFilterChange={handleOriginFilterChange} />
+                    <FilterOrigin handleOriginFilterChange={(e)=>{
+                        handleOriginFilterChange(e, dispatch)
+                    }} />
                 </div>
                 <div>
-                    <FilterName handleSortOrderNameChange={handleSortOrderNameChange} />
+                    <FilterName handleSortOrderNameChange={(e)=>{
+                        handleSortOrderNameChange(e,dispatch)
+                    }} />
                 </div>
                 <div>
-                    <FilterAttack handleSortOrderAttackChange={handleSortOrderAttackChange} />
+                    <FilterAttack handleSortOrderAttackChange={(e)=>{
+                        handleSortOrderAttackChange(e,dispatch)
+                    }} />
                 </div>
                 <button  className={styles.button} type='submit'>Show all</button>
             </form>
