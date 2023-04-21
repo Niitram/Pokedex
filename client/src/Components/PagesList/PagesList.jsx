@@ -14,7 +14,7 @@ function PagesList() {
         dispatch(getAllPokemons())
     },[dispatch])
 
-    //cantidad de paginas (cantidad de pokemons / 12)
+    //cantidad de paginas (cantidad de pokemons / 12) para que no se me vaya el next
     const totalPages = Math.ceil((copyAllPokemons.length - 1) / 12);
     const arrayWithPages = divideArray(copyAllPokemons)
     
@@ -38,8 +38,9 @@ function PagesList() {
                         if (arrayWithPages.length-1) {
                             return (
                                 <button
+                                    disabled={currentPage === index+1}
                                     className={styles.buttonNext}
-                                    key={arrayWithPages.length*index}
+                                    key={index}
                                     onClick={()=>{
                                         showPokemons(copyAllPokemons,setCurrentPage(index+1) )
                                     }}>

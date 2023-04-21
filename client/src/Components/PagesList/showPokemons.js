@@ -1,6 +1,5 @@
 import Card from "../Card/Card";
 
-// Función para mostrar los pokemons en una página determinada
 const showPokemons = (pokemonList, page) => {
     const startIndex = (page - 1) * 12;
     const endIndex = startIndex + 11;

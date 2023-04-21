@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  validateStringAndNumber, validateTypes } from './validates'
 import axios from "axios"
 import { Link } from 'react-router-dom'
+import styles from './FormCreate.module.css'
 
 
 function FormCreate() {
@@ -84,130 +85,138 @@ function FormCreate() {
     }
   }
   
-
+  console.log((pokemonData.image.length>1 && !errors.image));
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name-input">Name:</label>
-          <input placeholder='Pokemon name' onChange={handleInputChange} value={pokemonData.name} type="text" id="name-input" name="name"/>
-          {errors.name?<div>{errors.name}</div>:<div></div>}
-        </div>
-        <div>
-          <div>
-            <label htmlFor="image-input">Image:</label>
-            <input placeholder='Url-Image' onChange={handleInputChange} type="text" id="image-input" name="image"/>
-            {errors.image?<div>{errors.image}</div>:<div></div>}
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Create your</h1>
+        <div className={styles.headerImg}></div>
+      </div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.formContainer}>
+          <div className={styles.containerImgInput}>
+            <div className={styles.labelInputImg}>
+              <label className={styles.labels} htmlFor="image-input">Image:</label>
+              <input className={styles.inputs} placeholder='Url-Image' onChange={handleInputChange} type="text" id="image-input" name="image"/>
+            </div>
+            <div style={{ backgroundImage: `url(${(pokemonData.image.length>1 && !errors.image) ? pokemonData.image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"})`}} className={styles.containerImg}>
+            {errors.image?<div className={styles.errorMessage}>{errors.image}</div>:<div></div>}
+            </div>
           </div>
-          <div>
-            <div>
-              <label htmlFor="hp-input">Hp:</label>
-              <input onChange={handleInputChange} value={pokemonData.hp} type="number" id="hp-input" name="hp" />
-              {errors.hp?<div>{errors.hp}</div>:<div></div>}
-            </div>
-            <div>
-              <label htmlFor="attack-input">Attack:</label>
-              <input onChange={handleInputChange} value={pokemonData.attack} type="number" id="attack-input" name="attack" />
-              {errors.attack?<div>{errors.attack}</div>:<div></div>}
-            </div>
-            <div>
-              <label htmlFor="defense-input">Defense:</label>
-              <input onChange={handleInputChange} value={pokemonData.defense} type="number" id="defense-input" name="defense"/>
-              {errors.defense?<div>{errors.defense}</div>:<div></div>}
-            </div>
-            <div>
-              <label htmlFor="speed-input">Speed:</label>
-              <input onChange={handleInputChange} value={pokemonData.speed} type="number" id="speed-input" name="speed"/>
-              {errors.speed?<div>{errors.speed}</div>:<div></div>}
-            </div>
-            <div>
-              <label htmlFor="height-input">Height:</label>
-              <input onChange={handleInputChange} value={pokemonData.height} type="number" id="height-input" name="height"/>
-            </div>
-            <div>
-              <label htmlFor="weight-input">Weight:</label>
-              <input onChange={handleInputChange} value={pokemonData.weight} type="number" id="weight-input" name="weight"/>
-            </div>
-            <div>
-              <fieldset>
-              {errors.types?<div>{errors.types}</div>:<div></div>}
-                <legend>Types:</legend>
-                <label>
-                  <input type="checkbox" name="types" value="normal" onChange={handleChangeTypes} multiple/>
-                  Normal
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="fighting" onChange={handleChangeTypes} />
-                  Fighting
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="flying" onChange={handleChangeTypes} />
-                  Flying
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="poison" onChange={handleChangeTypes} />
-                  Poison
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="ground" onChange={handleChangeTypes} />
-                  Ground
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="rock" onChange={handleChangeTypes} />
-                  Rock
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="bug" onChange={handleChangeTypes} />
-                  Bug
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="ghost" onChange={handleChangeTypes} />
-                  Ghost
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="steel" onChange={handleChangeTypes} />
-                  Steel
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="fire" onChange={handleChangeTypes} />
-                  Fire
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="water" onChange={handleChangeTypes} />
-                  Water
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="grass" onChange={handleChangeTypes} />
-                  Grass
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="electric" onChange={handleChangeTypes} />
-                  Electric
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="psychic" onChange={handleChangeTypes} />
-                  Psychic
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="ice" onChange={handleChangeTypes} />
-                  Ice
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="dragon" onChange={handleChangeTypes} />
-                  Dragon
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="dark" onChange={handleChangeTypes} />
-                  Dark
-                </label>
-                <label>
-                  <input type="checkbox" name="types" value="fairy" onChange={handleChangeTypes} />
-                  Fairy
-                </label>
-              </fieldset>
-            </div>
+          <div className={styles.containerInputs}>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="name-input">Name:</label>
+                <input className={styles.inputs} placeholder='Pokemon name' onChange={handleInputChange} value={pokemonData.name} type="text" id="name-input" name="name"/>
+                {errors.name?<div className={styles.errorMessage}>{errors.name}</div>:<div className={styles.message}>Only letters</div>}
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="hp-input">Hp:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.hp} type="number" id="hp-input" name="hp" />
+                {errors.hp?<div className={styles.errorMessage}>{errors.hp}</div>:<div className={styles.message}>Only numbers</div>}
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="attack-input">Attack:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.attack} type="number" id="attack-input" name="attack" />
+                {errors.attack?<div className={styles.errorMessage}>{errors.attack}</div>:<div className={styles.message}>Only numbers</div>}
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="defense-input">Defense:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.defense} type="number" id="defense-input" name="defense"/>
+                {errors.defense?<div className={styles.errorMessage}>{errors.defense}</div>:<div className={styles.message}>Only numbers</div>}
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="speed-input">Speed:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.speed} type="number" id="speed-input" name="speed"/>
+                {errors.speed?<div className={styles.errorMessage}>{errors.speed}</div>:<div className={styles.message}>Only numbers</div>}
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="height-input">Height:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.height} type="number" id="height-input" name="height"/>
+              </div>
+              <div className={styles.containersImputsLabels}>
+                <label className={styles.labels} htmlFor="weight-input">Weight:</label>
+                <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.weight} type="number" id="weight-input" name="weight"/>
+              </div>
+              <div>
+                <fieldset>
+                {errors.types?<div>{errors.types}</div>:<div></div>}
+                  <legend>Types:</legend>
+                  <label>
+                    <input type="checkbox" name="types" value="normal" onChange={handleChangeTypes} multiple/>
+                    Normal
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="fighting" onChange={handleChangeTypes} />
+                    Fighting
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="flying" onChange={handleChangeTypes} />
+                    Flying
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="poison" onChange={handleChangeTypes} />
+                    Poison
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="ground" onChange={handleChangeTypes} />
+                    Ground
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="rock" onChange={handleChangeTypes} />
+                    Rock
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="bug" onChange={handleChangeTypes} />
+                    Bug
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="ghost" onChange={handleChangeTypes} />
+                    Ghost
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="steel" onChange={handleChangeTypes} />
+                    Steel
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="fire" onChange={handleChangeTypes} />
+                    Fire
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="water" onChange={handleChangeTypes} />
+                    Water
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="grass" onChange={handleChangeTypes} />
+                    Grass
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="electric" onChange={handleChangeTypes} />
+                    Electric
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="psychic" onChange={handleChangeTypes} />
+                    Psychic
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="ice" onChange={handleChangeTypes} />
+                    Ice
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="dragon" onChange={handleChangeTypes} />
+                    Dragon
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="dark" onChange={handleChangeTypes} />
+                    Dark
+                  </label>
+                  <label>
+                    <input type="checkbox" name="types" value="fairy" onChange={handleChangeTypes} />
+                    Fairy
+                  </label>
+                </fieldset>
+              </div>
           </div>
         </div>
         {
