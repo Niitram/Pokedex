@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     speed: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     },
     height: {
