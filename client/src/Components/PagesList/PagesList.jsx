@@ -4,6 +4,7 @@ import { getAllPokemons } from '../../Redux/actions'
 import { useDispatch, useSelector } from 'react-redux';
 import divideArray from './divideArray';
 import styles from './PagesList.module.css'
+import ShowPokemons from './showPokemons';
 
 function PagesList() {
     const copyAllPokemons = useSelector(state=>state.copyAllPokemons)
@@ -17,8 +18,6 @@ function PagesList() {
     //cantidad de paginas (cantidad de pokemons / 12) para que no se me vaya el next
     const totalPages = Math.ceil((copyAllPokemons.length - 1) / 12);
     const arrayWithPages = divideArray(copyAllPokemons)
-    
-    const renderedPokemons = showPokemons(copyAllPokemons, currentPage);
 
     const nextPage = () => {
         setCurrentPage((prev) => prev + 1);
@@ -55,7 +54,7 @@ function PagesList() {
                 </button>
             </div>
             <div className={styles.containerCards}>
-                {renderedPokemons}
+                <ShowPokemons copyAllPokemons={copyAllPokemons} currentPage={currentPage} />
             </div>
         </div>
     )

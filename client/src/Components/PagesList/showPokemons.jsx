@@ -1,10 +1,11 @@
 import Card from "../Card/Card";
+import React from 'react'
 
-const showPokemons = (pokemonList, page) => {
-    const startIndex = (page - 1) * 12;
+const ShowPokemons = ({ copyAllPokemons, currentPage }) => {
+    const startIndex = (currentPage - 1) * 12;
     const endIndex = startIndex + 11;
     // Obtener los pokemons de la página actual
-    const pagePokemons = pokemonList.slice(startIndex, endIndex + 1);
+    const pagePokemons = copyAllPokemons.slice(startIndex, endIndex + 1);
     return (
         <>
             {pagePokemons.map((pokemon, index) => {
@@ -16,4 +17,4 @@ const showPokemons = (pokemonList, page) => {
     );
 }
 
-export default showPokemons
+export default ShowPokemons
