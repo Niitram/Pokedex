@@ -41,7 +41,8 @@ function PagesList() {
                                     className={styles.buttonNext}
                                     key={index}
                                     onClick={()=>{
-                                        showPokemons(copyAllPokemons,setCurrentPage(index+1) )
+                                        <ShowPokemons currentPage={setCurrentPage(index+1)} />
+                                        /* showPokemons(copyAllPokemons,setCurrentPage(index+1) ) */
                                     }}>
                                         {index+1}
                                 </button>
@@ -54,7 +55,7 @@ function PagesList() {
                 </button>
             </div>
             <div className={styles.containerCards}>
-                <ShowPokemons copyAllPokemons={copyAllPokemons} currentPage={currentPage} />
+                <ShowPokemons currentPage={currentPage} />
             </div>
         </div>
     )
