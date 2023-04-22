@@ -15,7 +15,6 @@ const getPokemonByName = async (name) => {
         } else {
             // Buscar en la API
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-
             const pokemonData = response.data;
 
             const pokemon = {
@@ -33,7 +32,10 @@ const getPokemonByName = async (name) => {
             return pokemon
         }
     } catch (error) {
-        return `pokemon no encontrado`
+        if (error.response.data == "Not Found") {
+            return `pokemon no encontrado`
+        }
+        return error.message
     }
 };
 

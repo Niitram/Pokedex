@@ -45,6 +45,9 @@ const getPokemonById = async (idPokemon) => {
             return pokemon
         }
     } catch (error) {
+        if (error.response.data == "Not Found") {
+            throw Error(`pokemon no encontrado o no existente`)
+        }
         throw Error(`Desde controller getPokemonById: ${error.message}`)
     }
 }
