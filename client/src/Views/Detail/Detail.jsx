@@ -27,7 +27,7 @@ function Detail() {
   
   return (
       <>
-      {pokemon?
+      {pokemon.name?
         (<div className={styles.detail}>
           <div className={styles.container}>
             <div className={styles.header}>
@@ -65,7 +65,7 @@ function Detail() {
                       <div className={styles.info}>Weight: {weight<=0? "Unknown":weight}</div>
                     </div>
                   </div>
-                  <div className={styles.containerTypes}>{types &&  types.map(type => <div style={{ color: `${colorTypesGenerator(type)}` }} className={styles.type}>{type}</div>)}</div>
+                  <div className={styles.containerTypes}>{types &&  types.map((type,index) => <div key={index} style={{ color: `${colorTypesGenerator(type)}` }} className={styles.type}>{type}</div>)}</div>
               </div>
             </div>
           </div>

@@ -37,7 +37,7 @@ const colorTypesGenerator = (type) => {
         case 'fairy':
             return '#EE99AC';
         case 'unknown':
-            return '#EG99AC';
+            return '#B8A038';
         case 'shadow':
             return '#B8AAD0';
         default:

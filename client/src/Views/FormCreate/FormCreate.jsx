@@ -3,11 +3,19 @@ import {  validateStringAndNumber, validateTypes } from './validates'
 import axios from "axios"
 import { Link } from 'react-router-dom'
 import styles from './FormCreate.module.css'
+import { useSelector } from 'react-redux'
+import colorTypesGenerator  from '../../utils/colorTypesGenerator'
 
 
 function FormCreate() {
   const [pokemonTypes,setPokemonTypes]=useState([])
-  const [pokemonCreated,setPokemonCreated]=useState({created:false,id:""})
+  const [pokemonCreated,setPokemonCreated]=useState({
+    created:false,
+    id:"",
+    creating:false,
+    exists:false
+})
+  const allTypes = useSelector(state => state.allTypes)
 
   const [pokemonData,setPokemonData]=useState({
     name:"",
@@ -68,15 +76,34 @@ function FormCreate() {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
+    setPokemonCreated({...pokemonCreated,creating:true})
     try {
       if(pokemonData.name&&!errors.name&&!errors.image&&!errors.hp&&!errors.attack&&!errors.defense&&!errors.speed&&!errors.types){
+        if (!pokemonData.speed) pokemonData.speed=0
+        if (!pokemonData.height) pokemonData.height=0
+        if (!pokemonData.weight) pokemonData.weight=0
+          
+        setPokemonData({
+          name:pokemonData.name.toLowerCase(),
+          image:pokemonData.image,
+          hp:parseInt(pokemonData.hp),
+          attack:parseInt(pokemonData.attack),
+          defense:parseInt(pokemonData.defense),
+          speed:parseInt(pokemonData.speed),
+          height:parseInt(pokemonData.height),
+          weight:parseInt(pokemonData.weight),
+          types:[...pokemonData.types]
+        })
         const response = await axios.post("http://localhost:3001/pokemons",pokemonData )
         if (response.data==="Ya existe un Pokemon con ese nombre") {
           setErrors(prevState => { return { ...prevState, name: response.data} })
+          setPokemonCreated({created:false,id:"",creating:false, exists:true})
         }
         else{
-          console.log(response.data);
-          setPokemonCreated({created:true,id:response.data.id})
+          
+          if (response.data) {
+            setPokemonCreated({created:true,id:response.data.id,creating:false, exists:false})
+          }
         }
       }
       
@@ -84,8 +111,6 @@ function FormCreate() {
       console.log(`error: ${err.message}`);
     }
   }
-  
-  console.log((pokemonData.image.length>1 && !errors.image));
 
 
   return (
@@ -99,7 +124,7 @@ function FormCreate() {
           <div className={styles.containerImgInput}>
             <div className={styles.labelInputImg}>
               <label className={styles.labels} htmlFor="image-input">Image:</label>
-              <input className={styles.inputs} placeholder='Url-Image' onChange={handleInputChange} type="text" id="image-input" name="image"/>
+              <input className={styles.inputs} placeholder='https://image.png' onChange={handleInputChange} type="text" id="image-input" name="image"/>
             </div>
             <div style={{ backgroundImage: `url(${(pokemonData.image.length>1 && !errors.image) ? pokemonData.image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1280px-International_Pok%C3%A9mon_logo.svg.png"})`}} className={styles.containerImg}>
             {errors.image?<div className={styles.errorMessage}>{errors.image}</div>:<div></div>}
@@ -108,7 +133,7 @@ function FormCreate() {
           <div className={styles.containerInputs}>
               <div className={styles.containersImputsLabels}>
                 <label className={styles.labels} htmlFor="name-input">Name:</label>
-                <input className={styles.inputs} placeholder='Pokemon name' onChange={handleInputChange} value={pokemonData.name} type="text" id="name-input" name="name"/>
+                <input className={styles.inputs} placeholder='pikachu, lucario, etc' onChange={handleInputChange} value={pokemonData.name} type="text" id="name-input" name="name"/>
                 {errors.name?<div className={styles.errorMessage}>{errors.name}</div>:<div className={styles.message}>Only letters</div>}
               </div>
               <div className={styles.containersImputsLabels}>
@@ -139,94 +164,35 @@ function FormCreate() {
                 <label className={styles.labels} htmlFor="weight-input">Weight:</label>
                 <input className={styles.inputs} onChange={handleInputChange} value={pokemonData.weight} type="number" id="weight-input" name="weight"/>
               </div>
-              <div>
-                <fieldset>
-                {errors.types?<div>{errors.types}</div>:<div></div>}
-                  <legend>Types:</legend>
-                  <label>
-                    <input type="checkbox" name="types" value="normal" onChange={handleChangeTypes} multiple/>
-                    Normal
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="fighting" onChange={handleChangeTypes} />
-                    Fighting
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="flying" onChange={handleChangeTypes} />
-                    Flying
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="poison" onChange={handleChangeTypes} />
-                    Poison
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="ground" onChange={handleChangeTypes} />
-                    Ground
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="rock" onChange={handleChangeTypes} />
-                    Rock
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="bug" onChange={handleChangeTypes} />
-                    Bug
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="ghost" onChange={handleChangeTypes} />
-                    Ghost
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="steel" onChange={handleChangeTypes} />
-                    Steel
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="fire" onChange={handleChangeTypes} />
-                    Fire
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="water" onChange={handleChangeTypes} />
-                    Water
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="grass" onChange={handleChangeTypes} />
-                    Grass
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="electric" onChange={handleChangeTypes} />
-                    Electric
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="psychic" onChange={handleChangeTypes} />
-                    Psychic
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="ice" onChange={handleChangeTypes} />
-                    Ice
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="dragon" onChange={handleChangeTypes} />
-                    Dragon
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="dark" onChange={handleChangeTypes} />
-                    Dark
-                  </label>
-                  <label>
-                    <input type="checkbox" name="types" value="fairy" onChange={handleChangeTypes} />
-                    Fairy
-                  </label>
-                </fieldset>
-              </div>
+              
           </div>
+        </div>
+        <div className={styles.containerFieldset}>
+          <h3 className={styles.titleFieldset}>Types</h3>
+          {errors.types?<div className={styles.errorMessage}>{errors.types}</div>:<div className={styles.message}>Maximum 2</div>}
+          <fieldset className={styles.fieldset}>
+            {
+              allTypes.map((type)=>{
+                return(
+                  <label style={{ backgroundColor: `${colorTypesGenerator(type.name)}` }} key={type.id} className={styles.labelTypes}>
+                  <input className={styles.inputTypes} type="checkbox" name="types" value={type.name} onChange={handleChangeTypes} key={type.id} multiple/>
+                  {type.name}
+                  </label>
+                )
+              })
+            }
+          </fieldset>
         </div>
         {
           (pokemonData.name&&!errors.name&&!errors.image&&!errors.hp&&!errors.attack&&!errors.defense&&!errors.speed&&!errors.types) ?
-            <button type="submit">Create</button>
+            <button type="submit" className={styles.buttonCreate}>Create</button>
             :
-            <button type="submit" disabled>Create</button>
+            <button type="submit" className={styles.buttonCreate} disabled>Create</button>
         }
       </form>
-      {pokemonCreated.created&&<Link to={`/detail/${pokemonCreated.id}`}>View created Pokemon</Link>}
+      {pokemonCreated.exists&&<div className={styles.errorMessage}>Pokemon already exists</div>}
+      {pokemonCreated.creating&&<div className={styles.message}>Creating...</div>}
+      {pokemonCreated.created&&<Link className={styles.linkDetail} to={`/detail/${pokemonCreated.id}`}>View created Pokemon</Link>}
     </div>
   )
 }
