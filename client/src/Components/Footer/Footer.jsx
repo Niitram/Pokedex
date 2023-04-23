@@ -1,16 +1,13 @@
 import React from 'react'
 import styles from './Footer.module.css'
 import { Link } from 'react-router-dom'
+import scrollToTop from './scrollToTop'
+
+
 
 
 function Footer() {
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
+    
 
 
     return (

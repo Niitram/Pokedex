@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import showPokemons from "./showPokemons";
 import { getAllPokemons } from '../../Redux/actions'
 import { useDispatch, useSelector } from 'react-redux';
 import divideArray from './divideArray';
 import styles from './PagesList.module.css'
-import ShowPokemons from './showPokemons';
+import ShowPokemons from '../ShowPokemons/ShowPokemons';
 
 function PagesList() {
     const copyAllPokemons = useSelector(state=>state.copyAllPokemons)
