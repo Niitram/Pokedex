@@ -7,6 +7,7 @@ import Home from './Views/Home/Home';
 import Landing from './Views/Landing/Landing';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
+import ModifyPokemon from './Views/ModifyPokemon/ModifyPokemon';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/createPokemon" element={<FormCreate />} />
+        <Route path="/modify/:id" element={<ModifyPokemon />} />
       </Routes>
       <div >
         {

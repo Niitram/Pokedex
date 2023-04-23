@@ -40,6 +40,7 @@ function Detail() {
           <div className={styles.container}>
             <div className={styles.header}>
               <Link className={styles.back} to={"/home"}>{"<"}</Link>
+              <Link className={styles.back} to={`/modify/${pokemon.id}`}>Modify</Link>
               <div className={styles.name}>{name}</div>
             </div>
             <div className={styles.number}>Nº{typeof pokemon.id === "string" ? "Unknown" :pokemon.id}</div>

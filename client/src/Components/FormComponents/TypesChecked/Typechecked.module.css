@@ -1,0 +1,58 @@
+.containerFieldset{
+    background: rgba(9, 33, 190, 0.2);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 50px;
+}
+
+.titleFieldset{
+    color: rgb(209, 209, 209);
+    font-size: 20px;
+    font-weight: 400;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.811);
+    letter-spacing: 2px;
+
+}
+.fieldset{
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 900px;
+    padding: 10px;
+}
+.labelTypes{
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+.inputTypes{
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.message{
+    color: rgba(240, 248, 255, 0.601);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 0px;
+}
+.errorMessage{
+    color: rgb(119, 2, 2);
+    font-size: 15px;
+    font-weight: 700;
+    background-color: rgb(197, 188, 177);
+    padding: 10px 10px;
+}

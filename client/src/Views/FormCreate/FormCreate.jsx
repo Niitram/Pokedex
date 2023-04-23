@@ -4,6 +4,7 @@ import styles from './FormCreate.module.css'
 import { useSelector } from 'react-redux'
 import colorTypesGenerator  from '../../utils/colorTypesGenerator'
 import { handleChangeTypes, handleInputChange, handleSubmit } from './handlersFormCreate'
+import Typechecked from '../../Components/FormComponents/TypesChecked/Typechecked'
 
 
 function FormCreate() {
@@ -126,7 +127,8 @@ function FormCreate() {
               
           </div>
         </div>
-        <div className={styles.containerFieldset}>
+        <Typechecked errors={errors} allTypes={allTypes} setPokemonData={setPokemonData} pokemonData={pokemonData}setErrors={setErrors} />
+        {/* <div className={styles.containerFieldset}>
           <h3 className={styles.titleFieldset}>Types</h3>
           {errors.types?<div className={styles.errorMessage}>{errors.types}</div>:<div className={styles.message}>Maximum 2</div>}
           <fieldset className={styles.fieldset}>
@@ -143,7 +145,7 @@ function FormCreate() {
               })
             }
           </fieldset>
-        </div>
+        </div> */}
         {
           (pokemonData.name&&!errors.name&&!errors.image&&!errors.hp&&!errors.attack&&!errors.defense&&!errors.speed&&!errors.types) ?
             <button type="submit" className={styles.buttonCreate}>Create</button>
