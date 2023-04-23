@@ -1,4 +1,4 @@
-import { SEARCH_BY_NAME, GET_ALL_POKEMONS, GET_ALL_TYPES, FILTER_TYPES, FILTER_ORIGIN, ORDER_NAME, ORDER_ATTACK } from "./actions"
+import { SEARCH_BY_NAME, GET_ALL_POKEMONS, GET_ALL_TYPES, FILTER_TYPES, FILTER_ORIGIN, ORDER_NAME, ORDER_ATTACK, DELETE_POKEMON } from "./actions"
 
 
 
@@ -24,6 +24,14 @@ const rootReducer = (state = initialState, action) => {
                 copyAllPokemons: [...action.payload],
                 allPokemons: [...action.payload],
                 filteredPokemons: [...action.payload]
+            }
+        case DELETE_POKEMON:
+            const pokemons = state.allPokemons.filter(pokemon => pokemon.id !== action.payload);
+            return {
+                ...state,
+                copyAllPokemons: [...pokemons],
+                allPokemons: [...pokemons],
+                filteredPokemons: [...pokemons]
             }
 
         case GET_ALL_TYPES:

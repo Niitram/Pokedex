@@ -7,6 +7,7 @@ export const FILTER_TYPES = "FILTER_TYPES"
 export const FILTER_ORIGIN = "FILTER_ORIGIN"
 export const ORDER_NAME = "ORDER_NAME"
 export const ORDER_ATTACK = "ORDER_ATTACK"
+export const DELETE_POKEMON = "DELETE_POKEMON"
 
 const URL_BASE = `http://localhost:3001`
 
@@ -37,6 +38,21 @@ export const getAllPokemons = () => {
             type: GET_ALL_POKEMONS,
             payload: response.data
         })
+    }
+}
+/* delete pokemon db */
+export const deletePokemon = (id) => {
+    try {
+        return async function (dispatch) {
+            const response = await axios.delete(`${URL_BASE}/pokemons/${id}`)
+            dispatch({
+                type: DELETE_POKEMON,
+                payload: id
+            })
+        }
+        // eslint-disable-next-line no-unreachable
+    } catch (error) {
+        console.error(error.mesagge);
     }
 }
 /* trae todos los types */

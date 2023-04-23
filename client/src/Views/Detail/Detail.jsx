@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from "react-redux";
 import styles from './Detail.module.css'
 import colorTypesGenerator from  '../../utils/colorTypesGenerator'
+import { handlerDelete } from './handlersDetail';
+import redirectHome from './redirectHome';
 
 function Detail() {
   const {id}=useParams()
   const [pokemon , setPokemon]=useState({})
+  const [pokemonDeleted , setPokemonDeleted]=useState(false)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(()=>{
     fetch(`http://localhost:3001/pokemons/${id}`)
@@ -23,10 +29,12 @@ function Detail() {
             return setPokemon({});
   },[id])
 
+  redirectHome(pokemonDeleted,navigate)
+
   const {name, image, hp,attack,defense,speed,height,weight,types} = pokemon
   
   return (
-      <>
+    <>
       {pokemon.name?
         (<div className={styles.detail}>
           <div className={styles.container}>
@@ -67,6 +75,11 @@ function Detail() {
                   </div>
                   <div className={styles.containerTypes}>{types &&  types.map((type,index) => <div key={index} style={{ color: `${colorTypesGenerator(type)}` }} className={styles.type}>{type}</div>)}</div>
               </div>
+              {typeof pokemon.id === "string" && <button className={styles.deleteButton} onClick={(e)=>{
+                handlerDelete(e,dispatch,pokemon.id)
+                setPokemonDeleted(true)
+              }}>Delete Pokemon</button> }
+              {pokemonDeleted && <div className={styles.messageDeleted}>Pokemon deleted, redirecting to home...</div>}
             </div>
           </div>
         </div>)

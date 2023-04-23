@@ -240,6 +240,25 @@
     background-position: center;
 }
 
+.deleteButton{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #dfdfdf;
+    background-color: rgb(97, 19, 19);
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.deleteButton:hover{
+    color: rgb(97, 19, 19);
+    background-color: rgb(237, 237, 237);
+}
+.messageDeleted{
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #a5a5a5;
+    color: #080808;
+}
 
 @media screen and (max-width: 600px) {
     .detail{

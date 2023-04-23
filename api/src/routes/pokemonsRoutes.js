@@ -5,6 +5,7 @@ const handlerCreatePokemon = require("../handlers/handlerCreatePokemon")
 const handlerGetPokemonId = require("../handlers/handlerGetPokemonId")
 const handlerGetPokemonByName = require("../handlers/handlerGetPokemonByName")
 const handlerGetAllPokemons = require("../handlers/handlerGetAllPokemons")
+const handlerDeletePokemon = require("../handlers/handlerDeletePokemon")
 
 const pokemonsRouter = Router()
 
@@ -16,6 +17,8 @@ pokemonsRouter.get("/name", handlerGetPokemonByName)
 pokemonsRouter.get("/:idPokemon", handlerGetPokemonId)
 
 pokemonsRouter.post("/", handlerCreatePokemon)
+
+pokemonsRouter.delete("/:idPokemon", handlerDeletePokemon)
 
 
 module.exports = pokemonsRouter
