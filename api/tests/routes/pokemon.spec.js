@@ -6,14 +6,14 @@ const { Pokemon, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const pokemon = {
-  name: 'Pikachu',
+  name: 'Pikachu', hp: 100, attack: 100, defense: 100, speed: 100, height: 100, weight: 100, image: 'https://cdn.bulbagarden.net/upload/thumb/9/98/025Pikachu.png/800px-025Pikachu.png'
 };
 
 describe('Pokemon routes', () => {
   before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
+    .catch((err) => {
+      console.error('Unable to connect to the database:', err);
+    }));
   beforeEach(() => Pokemon.sync({ force: true })
     .then(() => Pokemon.create(pokemon)));
   describe('GET /pokemons', () => {
