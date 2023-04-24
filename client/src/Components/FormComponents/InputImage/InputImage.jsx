@@ -7,7 +7,7 @@ function InputImage({setPokemonData, pokemonData, setErrors, errors}) {
         <div className={styles.containerImgInput}>
             <div className={styles.labelInputImg}>
                 <label className={styles.labels} htmlFor="image-input">Image:</label>
-                <input className={styles.inputs} placeholder='https://image.png' onChange={(e)=>{
+                <input  className={styles.inputs} placeholder='https://image.png' onChange={(e)=>{
                     handleInputChange(e,setPokemonData,pokemonData,setErrors)
                 }} type="text" id="image-input" name="image"/>
             </div>

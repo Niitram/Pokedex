@@ -6,6 +6,7 @@ const handlerGetPokemonId = require("../handlers/handlerGetPokemonId")
 const handlerGetPokemonByName = require("../handlers/handlerGetPokemonByName")
 const handlerGetAllPokemons = require("../handlers/handlerGetAllPokemons")
 const handlerDeletePokemon = require("../handlers/handlerDeletePokemon")
+const handlerModifyPokemon = require("../handlers/handlerModifyPokemon")
 
 const pokemonsRouter = Router()
 
@@ -15,6 +16,8 @@ pokemonsRouter.get("/", handlerGetAllPokemons)
 pokemonsRouter.get("/name", handlerGetPokemonByName)
 
 pokemonsRouter.get("/:idPokemon", handlerGetPokemonId)
+
+pokemonsRouter.put("/:idPokemon", handlerModifyPokemon)
 
 pokemonsRouter.post("/", handlerCreatePokemon)
 

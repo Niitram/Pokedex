@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './FormCreate.module.css'
 import { useSelector } from 'react-redux'
-import { handleInputChange, handleSubmit } from './handlersFormCreate'
+import { handleSubmit } from './handlersFormCreate'
 import Typechecked from '../../Components/FormComponents/TypesChecked/Typechecked'
 import InputImage from '../../Components/FormComponents/InputImage/InputImage'
 import InputStringName from '../../Components/FormComponents/InputString/InputStringName'
@@ -10,13 +10,12 @@ import InputNumber from '../../Components/FormComponents/InputNumber/InputNumber
 
 
 function FormCreate() {
-  const [pokemonTypes,setPokemonTypes]=useState([])
   const [pokemonCreated,setPokemonCreated]=useState({
     created:false,
     id:"",
     creating:false,
     exists:false
-})
+  })
   const allTypes = useSelector(state => state.allTypes)
 
   const [pokemonData,setPokemonData]=useState({
@@ -41,21 +40,6 @@ function FormCreate() {
     weight:0,
     types:[]
   })
-  
-  //Configurar para que empieze con error y se limpie al salir
-  useEffect(()=>{
-    fetch("http://localhost:3001/types")
-      .then(response=>response.json())
-      .then((data)=>{
-        if (data.length) {
-          setPokemonTypes({...pokemonTypes, types : data.map(type=>type.name)})
-        }
-      }).catch((err)=>{
-        console.log(`error: ${err.message}`);
-      })
-
-  },[])
-
 
   return (
     <div className={styles.container}>
