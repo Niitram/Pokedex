@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import styles from "./ModifyPokemon.module.css"
-import { handleSubmit } from '../FormCreate/handlersFormCreate';
 import InputImage from '../../Components/FormComponents/InputImage/InputImage';
 import InputStringName from '../../Components/FormComponents/InputString/InputStringName';
 import InputNumber from '../../Components/FormComponents/InputNumber/InputNumber';
@@ -72,7 +71,7 @@ function ModifyPokemon() {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <h1 className={styles.title}>Create your</h1>
+                <h1 className={styles.title}>Edit your</h1>
                 <div className={styles.headerImg}></div>
             </div>
             <form className={styles.form} onSubmit={(e)=>{

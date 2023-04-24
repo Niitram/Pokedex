@@ -10,6 +10,7 @@
 }
 .labelInputImg{
     margin-bottom: 30px;
+    display: flex;
 }
 .containerImg{
     width: 300px;
