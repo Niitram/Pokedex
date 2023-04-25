@@ -1,11 +1,12 @@
 import { getAllPokemons, filterType, filterByOrigin, orderAttack, orderName } from "../../Redux/actions";
 
 
-export const handleTypeFilterChange = (e, selectedTypes, setSelectedTypes, dispatch) => {
+export const handleTypeFilterChange = (e, selectedTypes, setSelectedTypes, dispatch, setCurrentPage) => {
     let updateTypes = [...selectedTypes, e.target.value]
     if (e.target.checked) {
         setSelectedTypes([...updateTypes])
         dispatch(filterType(updateTypes))
+        setCurrentPage(1)
     } else {
         updateTypes = updateTypes.filter(type => type !== e.target.value);
         setSelectedTypes([...updateTypes])

@@ -5,9 +5,9 @@ import divideArray from './divideArray';
 import styles from './PagesList.module.css'
 import ShowPokemons from '../ShowPokemons/ShowPokemons';
 
-function PagesList() {
+function PagesList({currentPage,setCurrentPage}) {
     const copyAllPokemons = useSelector(state=>state.copyAllPokemons)
-    const [currentPage, setCurrentPage] = useState(1);
+    
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -41,7 +41,6 @@ function PagesList() {
                                     key={index}
                                     onClick={()=>{
                                         <ShowPokemons currentPage={setCurrentPage(index+1)} />
-                                        /* showPokemons(copyAllPokemons,setCurrentPage(index+1) ) */
                                     }}>
                                         {index+1}
                                 </button>

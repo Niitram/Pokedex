@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchPokemon from '../../Components/SearchPokemon/SearchPokemon'
 import PagesList from '../../Components/PagesList/PagesList'
 import Filters from '../../Components/Filters/Filters'
@@ -9,6 +9,9 @@ import styles from './Home.module.css'
 
 function Home() {
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+
   return (
     <div data-testid="home-container" className={styles.container}>
       <div className={styles.containerSearchFilter}>
@@ -16,10 +19,10 @@ function Home() {
           <SearchPokemon/>
         </div>
         <div className={styles.containerFilter}>
-          <Filters/>
+          <Filters setCurrentPage={setCurrentPage}/>
         </div>
       </div>
-      <div ><PagesList/></div>
+      <div ><PagesList currentPage={currentPage} setCurrentPage={setCurrentPage} /></div>
     </div>
   )
 }
