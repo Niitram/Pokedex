@@ -27,6 +27,10 @@ class Footer extends React.Component{
 }
 
 
+
+
+
+
 /* function Footer() {
     
 
