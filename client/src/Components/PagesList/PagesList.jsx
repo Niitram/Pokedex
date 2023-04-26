@@ -19,7 +19,9 @@ function PagesList({currentPage,setCurrentPage}) {
     const arrayWithPages = divideArray(copyAllPokemons)
 
     const nextPage = () => {
+        console.log(currentPage);
         setCurrentPage((prev) => prev + 1);
+        console.log(currentPage);
     };
     const prevPage = () => {
         setCurrentPage((prev) => prev - 1);

@@ -61,6 +61,12 @@ const rootReducer = (state = initialState, action) => {
             const filter = arrFilter.filter(pokemon => {
                 return action.payload.every(type => pokemon.types.includes(type))
             });
+            if (!action.payload.length) {
+                return {
+                    ...state,
+                    copyAllPokemons: [...state.allPokemons]
+                }
+            }
             return {
                 ...state,
                 copyAllPokemons: [...filter]

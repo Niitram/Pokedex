@@ -14,8 +14,9 @@ export const handleTypeFilterChange = (e, selectedTypes, setSelectedTypes, dispa
     }
 }
 
-export const handleOriginFilterChange = (e, dispatch) => {
+export const handleOriginFilterChange = (e, dispatch, setCurrentPage) => {
     dispatch(filterByOrigin(e.target.value))
+    setCurrentPage(1)
 }
 
 export const handleSortOrderNameChange = (e, dispatch) => {

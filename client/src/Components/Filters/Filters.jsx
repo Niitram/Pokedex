@@ -32,7 +32,7 @@ function Filters({setCurrentPage}) {
                 </div>
                 <div>
                     <FilterOrigin handleOriginFilterChange={(e)=>{
-                        handleOriginFilterChange(e, dispatch)
+                        handleOriginFilterChange(e, dispatch,setCurrentPage)
                     }} />
                 </div>
                 <div>
