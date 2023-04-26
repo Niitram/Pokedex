@@ -16,7 +16,6 @@ const getPokemonByName = async (name) => {
             // Buscar en la API
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
             const pokemonData = response.data;
-
             const pokemon = {
                 id: pokemonData.id,
                 name: pokemonData.name,

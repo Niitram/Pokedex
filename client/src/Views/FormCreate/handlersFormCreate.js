@@ -41,15 +41,12 @@ export const handleSubmit = async (e, setPokemonCreated, pokemonCreated, pokemon
                 types: [...pokemonData.types]
             })
             const response = await axios.post("http://localhost:3001/pokemons", pokemonData)
-            if (response.data === "Ya existe un Pokemon con ese nombre") {
+            if (!response.data) {
                 setErrors(prevState => { return { ...prevState, name: response.data } })
                 setPokemonCreated({ created: false, id: "", creating: false, exists: true })
             }
-            else {
-
-                if (response.data) {
-                    setPokemonCreated({ created: true, id: response.data.id, creating: false, exists: false })
-                }
+            if (response.data) {
+                setPokemonCreated({ created: true, id: response.data.id, creating: false, exists: false })
             }
         }
 
