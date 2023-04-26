@@ -24,11 +24,14 @@
     border-radius: 10%;
     cursor:pointer;
 }
-.buttonNext:hover{
+/* .buttonNext:hover{
+    background-color: var(--jet);
+    color: var(--white-smoke);
+} */
+.buttonNext:not(:disabled):hover {
     background-color: var(--jet);
     color: var(--white-smoke);
 }
-
 
 .containerCards{
     display: flex;

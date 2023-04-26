@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { getAllPokemons } from '../../Redux/actions'
 import { useDispatch, useSelector } from 'react-redux';
 import divideArray from './divideArray';

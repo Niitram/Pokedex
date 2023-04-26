@@ -33,7 +33,7 @@ function SearchPokemon() {
                                 handlerSubmit(e,nameSearch,setSearching,setPokemonFound,dispatch,searchByName,setNameSearch)
                             }}}
                     />
-                    <button disabled={nameSearch.length===0} className={styles.button} type="submit" >Search</button>
+                    <button disabled={nameSearch.length===0 || nameSearch===" "} className={styles.button} type="submit" >Search</button>
                 </div>
             </form>
         </>

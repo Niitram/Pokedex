@@ -24,7 +24,7 @@
     background-color: var(--jet);
     color: white;
 }
-.button:hover{
+.button:not(:disabled):hover{
     cursor: pointer;
     background-color: white;
     color: var(--jet);
