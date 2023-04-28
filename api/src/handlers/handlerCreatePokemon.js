@@ -12,12 +12,11 @@ const handlerCreatePokemon = async (req, res) => {
         const pokemonExists = Array.isArray(pokemonFinded) ?
             pokemonFinded.find(p => p.name === name) :
             pokemonFinded.name === name
-        console.log(pokemonExists);
-        if (!pokemonFinded) {
+        if (!pokemonExists) {
             const response = await createPokemon({ name, image, hp, attack, defense, speed, types, height, weight });
             res.status(201).json(response);
         }
-        if (pokemonFinded) res.status(204).send(`Ya existe un Pokemon con ese nombre`)
+        if (pokemonExists) res.status(204).send(`Ya existe un Pokemon con ese nombre`)
     } catch (error) {
         res.status(404).json({ error: error.message });
     }
