@@ -20,9 +20,9 @@ export const handleSubmitModify = async (e, setPokemonCreated, pokemonCreated, p
                 weight: parseInt(pokemonData.weight),
                 types: [...pokemonData.types]
             })
-            console.log(pokemonData);
             const response = await axios.put(`http://localhost:3001/pokemons/${id}`, pokemonData)
-            if (response.data === "Ya existe un Pokemon con ese nombre") {
+            console.log(response);
+            if (response.data === "Pokemon already exists") {
                 setErrors(prevState => { return { ...prevState, name: response.data } })
                 setPokemonCreated({ created: false, id: "", creating: false, exists: true })
             }

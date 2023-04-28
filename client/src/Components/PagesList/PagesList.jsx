@@ -14,8 +14,6 @@ function PagesList({currentPage,setCurrentPage}) {
         dispatch(getAllPokemons())
     },[dispatch])
 
-    //cantidad de paginas (cantidad de pokemons / 12) para que no se me vaya el next
-    const totalPages = Math.ceil((copyAllPokemons.length - 1) / 12);
     const arrayWithPages = divideArray(copyAllPokemons)
 
     const nextPage = () => {

@@ -38,7 +38,7 @@ function ModifyPokemon() {
         speed:0,
         height:0,
         weight:0,
-        types:[]
+        types:""
     })
     
     //Configurar para que empieze con error y se limpie al salir
@@ -67,6 +67,8 @@ function ModifyPokemon() {
                     types:[]
                 });
     },[id])
+    console.log(pokemonData);
+    console.log(errors);
 
     return (
         <div className={styles.container}>
