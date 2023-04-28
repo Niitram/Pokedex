@@ -67,8 +67,6 @@ function ModifyPokemon() {
                     types:[]
                 });
     },[id])
-    console.log(pokemonData);
-    console.log(errors);
 
     return (
         <div className={styles.container}>

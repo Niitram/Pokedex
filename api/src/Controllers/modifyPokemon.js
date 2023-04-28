@@ -14,10 +14,8 @@ const modifyPokemon = ({ idPokemon, name, image, hp, attack, defense, speed, typ
                     resolve("Pokemon already exists");
                     return;
                 } else {
-                    console.log("casi");
                     Pokemon.findByPk(idPokemon)
                         .then(pokemon => {
-                            console.log("siiiiiiii");
                             Type.findAll({ where: { name: types } })
                                 .then(typesToUpdate => {
                                     const updatedPokemonData = {
